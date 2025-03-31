@@ -32,6 +32,24 @@ public:
     }
 };
 
+// DeepSeek 优化后的头插法解法：
+class Solution
+{
+public:
+    ListNode *reverseList(ListNode *head)
+    {
+        ListNode dummy; // 栈上创建虚拟头节点（无需new）
+        while (head != nullptr)
+        {
+            ListNode *curr = head;   // 直接复用原节点
+            head = head->next;       // 先移动head
+            curr->next = dummy.next; // 头插法
+            dummy.next = curr;
+        }
+        return dummy.next;
+    }
+};
+
 // 双指针法
 class Solution
 {
